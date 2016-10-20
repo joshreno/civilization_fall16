@@ -1,11 +1,13 @@
-public class Game {
+package model;
+
+class Fish {
     private int healthIncrease;
 
-    public Game(int health) {
+    public Fish(int health) {
         this.healthIncrease = health;
     }
 
-    public Game() {
+    public Fish() {
         this(20);
     }
 
