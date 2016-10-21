@@ -2,9 +2,8 @@ package model;
 
 public class BlackPowderUnit extends SiegeUnit {
 
-    public BlackPowderUnit (Civilization civilization) {
-        super(civilization);
-        super.setDamage((int) 1.5*(super.getDamage())); // wrong or right?
+    public BlackPowderUnit(Civilization civilization) {
+        super(civilization);  // wrong or right?
 
     }
 
@@ -16,13 +15,12 @@ public class BlackPowderUnit extends SiegeUnit {
     @Override
     public void battle(MapObject mapObject) {
 
-        // mapObject.damage(super.getDamage());
-        // if (!mapObject.isDestroyed()) {
-        //     if (mapObject instanceof MeleeUnit) {
-        //         ((MeleeUnit) mapObject).setCanAttack(true);
-        //     }
-        // }
-        // how do i implement being attacked and such
+        mapObject.damage(((MilitaryUnit) mapObject).getDamage());
+        if (!mapObject.isDestroyed()) {
+            if (mapObject instanceof MeleeUnit) {
+                this.damage(((MeleeUnit) mapObject).getDamage());
+            }
+        }
     }
 
 

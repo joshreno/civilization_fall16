@@ -2,7 +2,7 @@ package model;
 
 public class WarChariot extends RangedUnit {
 
-    public WarChariot (Civilization civilization) {
+    public WarChariot(Civilization civilization) {
         super(civilization);
 
     }
@@ -15,10 +15,10 @@ public class WarChariot extends RangedUnit {
     @Override
     public void battle(MapObject mapObject) {
 
-        mapObject.damage(super.getDamage());
+        mapObject.damage(((MilitaryUnit) mapObject).getDamage());
         if (!mapObject.isDestroyed()) {
             if (mapObject instanceof MeleeUnit) {
-                ((MeleeUnit) mapObject).setCanAttack(true);
+                this.damage(((MeleeUnit) mapObject).getDamage());
             }
         }
     }

@@ -224,7 +224,7 @@ public class Model {
         MapObject attacker = selected.getOccupant();
         MapObject enemy = map.getTile(r, c).getOccupant();
 
-        if (map.isEmpty(r, c) == true) {
+        if (map.isEmpty(r, c)) {
             return false;
         }
         if (!(selected.getOccupant() instanceof MilitaryUnit)
@@ -232,7 +232,7 @@ public class Model {
             return false;
         }
 
-        if (!((Unit) attacker).getCanAttack()){
+        if (!((Unit) attacker).getCanAttack()) {
             return false;
         }
 

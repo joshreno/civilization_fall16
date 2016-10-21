@@ -1,6 +1,6 @@
 package model;
 
-abstract class MapObject implements Symbolizable{
+abstract class MapObject implements Symbolizable {
     private int health;
     private Civilization owner;
 

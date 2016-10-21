@@ -18,9 +18,8 @@ public class SiegeUnit extends MilitaryUnit {
     @Override
     public void battle(MapObject mapObject) {
         if (mapObject instanceof Building) {
-            ((Building) mapObject).damage(super.getDamage());
+            mapObject.damage(super.getDamage());
         }
-
     }
 
     @Override

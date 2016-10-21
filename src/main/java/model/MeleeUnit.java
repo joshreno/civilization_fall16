@@ -18,11 +18,11 @@ public class MeleeUnit extends MilitaryUnit {
     @Override
     public void battle(MapObject mapObject) {
 
-        mapObject.damage(super.getDamage());
+        mapObject.damage(((MilitaryUnit) mapObject).getDamage());
         if (!mapObject.isDestroyed()) {
             if (mapObject instanceof MeleeUnit
                 || mapObject instanceof HybridUnit) {
-                ((MilitaryUnit) mapObject).setCanAttack(true); // caste this first, deal damage to melee unit -> this.damage(mapObject.damage)
+                this.damage(((MilitaryUnit) mapObject).getDamage());
             }
         }
     }
