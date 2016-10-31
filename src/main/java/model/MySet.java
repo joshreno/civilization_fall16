@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Collections;
-
 public class MySet<E> implements SimpleSet<E> {
 
     private Object[] set = new Object[0];
@@ -25,7 +23,7 @@ public class MySet<E> implements SimpleSet<E> {
         }
     }
 
-    public E remove(E e) throws ElementDoesNotExistException{
+    public E remove(E e) throws ElementDoesNotExistException {
         if (contains(e)) {
             for (int i = 0; i < set.length; i++) {
                 if (set[i] == e) {
@@ -60,7 +58,7 @@ public class MySet<E> implements SimpleSet<E> {
         return false;
     }
 
-    public E[] removeAll(E[] e) throws ElementDoesNotExistException{
+    public E[] removeAll(E[] e) throws ElementDoesNotExistException {
         boolean containsThem = true;
         for (int i = 0; i < set.length; i++) {
             if (!(contains(e[i]))) {
@@ -91,12 +89,11 @@ public class MySet<E> implements SimpleSet<E> {
     public boolean isEmpty() {
         if (size() == 0) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
-    public E getRandomElement() throws ElementDoesNotExistException{
+    public E getRandomElement() throws ElementDoesNotExistException {
         if (isEmpty()) {
             throw new ElementDoesNotExistException("There are no elements.");
         } else {
