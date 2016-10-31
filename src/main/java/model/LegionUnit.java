@@ -1,11 +1,29 @@
 package model;
 
-public class LegionUnit extends MeleeUnit {
+/**
+ * Represents a Legion unit.
+ *
+ * @author Jim Harris
+ * @version 1.0
+ */
+class LegionUnit extends MeleeUnit {
 
-    public LegionUnit(Civilization civilization) {
-        super(civilization);
-        super.setDamage((int) 1.5 * (super.getDamage()));
+    /**
+     * Public constructor
+     *
+     * @param owner The owner of this unit.
+     */
+    public LegionUnit(Civilization owner) {
+        super(owner);
+        this.setDamage((int) (this.getDamage() * 1.5));
+    }
 
+    @Override
+    public void battle(MapObject o) {
+        o.damage(this.getDamage());
+        if (!o.isDestroyed() && o instanceof MeleeUnit) {
+            damage(((MilitaryUnit) o).getDamage());
+        }
     }
 
     @Override
@@ -14,27 +32,7 @@ public class LegionUnit extends MeleeUnit {
     }
 
     @Override
-    public void battle(MapObject mapObject) {
-
-        mapObject.damage(((MilitaryUnit) mapObject).getDamage());
-        super.setCanAttack(false);
-        if (!mapObject.isDestroyed()) {
-            if (mapObject instanceof MeleeUnit) {
-
-                this.damage(((MilitaryUnit) mapObject).getDamage());
-
-            }
-        }
-
-    }
-
-
-
-    @Override
     public String toString() {
         return "Legion. " + super.toString();
     }
-
-
-
 }

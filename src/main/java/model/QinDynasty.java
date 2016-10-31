@@ -1,28 +1,34 @@
 package model;
 
+/**
+ * Represents the Qin Dynasty Civiization.
+ *
+ * @version 2.0
+ * @author Angie Palm, Jim Harris
+ */
 class QinDynasty extends Civilization {
-
     private Hills hills = new Hills();
 
+    /**
+     * Public constructor.
+     */
     public QinDynasty() {
         super("Qin Dynasty");
     }
 
-    public Hills getHills() {
-        return hills;
-    }
-
     @Override
     public String explore() {
-        int amt;
-        if (hills.replenishGame()) {
-            amt = hills.hunt().getHealth();
-            super.makeFood(amt);
-        } else {
-            amt = hills.hunt().getHealth();
-            super.makeFood(amt);
-        }
-        return "You mine the hills and find " + amt + " food for your supply!";
+        int food = hills.hunt().getHealth();
+        hills.replenishGame();
+        makeFood(food);
+        return "You go hunting and get " + food + " food!";
+    }
+
+    /**
+     * @return the Hills for this Civilization.
+     */
+    public Hills getHills() {
+        return hills;
     }
 
     @Override
@@ -34,5 +40,4 @@ class QinDynasty extends Civilization {
     public Landmark getLandmark() {
         return new GreatWall(this);
     }
-
 }

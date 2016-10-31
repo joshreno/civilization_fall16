@@ -1,10 +1,25 @@
 package model;
 
-public class BlackPowderUnit extends SiegeUnit {
+/**
+ * Represents a Black Powder unit.
+ *
+ * @author Jim Harris
+ * @version 1.0
+ */
+class BlackPowderUnit extends SiegeUnit {
 
-    public BlackPowderUnit(Civilization civilization) {
-        super(civilization);  // wrong or right?
+    /**
+     * Public constructor
+     *
+     * @param owner The owner of this unit.
+     */
+    public BlackPowderUnit(Civilization owner) {
+        super(owner);
+    }
 
+    @Override
+    public void battle(MapObject o) {
+        o.damage(this.getDamage());
     }
 
     @Override
@@ -12,22 +27,9 @@ public class BlackPowderUnit extends SiegeUnit {
         return 'B';
     }
 
-    @Override
-    public void battle(MapObject mapObject) {
-
-        mapObject.damage(((MilitaryUnit) mapObject).getDamage());
-        if (!mapObject.isDestroyed()) {
-            if (mapObject instanceof MeleeUnit) {
-                this.damage(((MeleeUnit) mapObject).getDamage());
-            }
-        }
-    }
-
-
 
     @Override
     public String toString() {
         return "Black Powder Unit. " + super.toString();
     }
-
 }
