@@ -8,7 +8,7 @@ import java.util.Random;
  * @version 3.0
  * @author Taylor Hartman, Ryan Voor, Jim Harris
  */
-class Civilization {
+class Civilization implements Comparable {
     private static Random rand = new Random();
 
     private String name;
@@ -42,6 +42,13 @@ class Civilization {
         resources += 20;
         return "You explore your surroundings and acquire 20 resources!";
     }
+
+
+    public int compareTo(Object o) {
+
+        return (strategy.getStrategyLevel() - ((Civilization) (o)).getStrategy().getStrategyLevel());
+    }
+
 
     /**
      * @return a String containing all of the skills this Civilization owns.
@@ -272,5 +279,10 @@ class Civilization {
      */
     public Landmark getLandmark() {
         return new Landmark(this);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
