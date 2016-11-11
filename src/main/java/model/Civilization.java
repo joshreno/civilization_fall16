@@ -46,7 +46,8 @@ class Civilization implements Comparable {
 
     public int compareTo(Object o) {
 
-        return (strategy.getStrategyLevel() - ((Civilization) (o)).getStrategy().getStrategyLevel());
+        return (strategy.getStrategyLevel()
+            - ((Civilization) (o)).getStrategy().getStrategyLevel());
     }
 
 

@@ -1,6 +1,5 @@
 package model;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Collections;
 
 /**
@@ -138,42 +137,44 @@ public class Model {
             //Military Prowess
             System.out.println("People with the Pointiest Sticks:");
             Collections.sort(civs, (a, b) -> {
-                return (a.getStrategy().getStrategyLevel()
-                    - b.getStrategy().getStrategyLevel());
-            });
+                    return a.compareTo(b);
+                });
             System.out.println(civs);
             break;
         case 2:
             //Citizen Happiness
             System.out.println("People with the most faithful Citizens:");
             Collections.sort(civs, (a, b) -> {
-                return (a.getHappiness() - b.getHappiness());
-            });
+                    return (a.getHappiness() - b.getHappiness());
+                });
             System.out.println(civs);
             break;
         case 3:
             //Tech Points
             System.out.println("People with the best Science:");
             Collections.sort(civs, (a, b) -> {
-                return a.getTechnology().getTechPoints()
-                    - b.getTechnology().getTechPoints();
-            });
+                    return a.getTechnology().getTechPoints()
+                        - b.getTechnology().getTechPoints();
+                });
             System.out.println(civs);
             break;
         case 4:
             //Amount of resources
             System.out.println("People with the finest Resources:");
             Collections.sort(civs, (a, b) -> {
-                return (a.getResources() - b.getResources());
-            });
+                    return (a.getResources() - b.getResources());
+                });
             System.out.println(civs);
             break;
         case 5:
             //Overall Prowess
             System.out.println("People with the Fanciest Crowns");
             Collections.sort(civs, (a, b) -> {
-                return (a.getStrategy().getStrategyLevel() + a.getNumSettlements() - b.getStrategy().getStrategyLevel() - b.getNumSettlements());
-            });
+                    return (a.getStrategy().getStrategyLevel()
+                        + a.getNumSettlements()
+                        - b.getStrategy().getStrategyLevel()
+                        - b.getNumSettlements());
+                });
             System.out.println(civs);
             break;
         default:
