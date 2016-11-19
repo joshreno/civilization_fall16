@@ -1,8 +1,6 @@
 package model;
 
 import java.util.Random;
-import java.util.Iterator;
-
 
 /**
  * Represents a custom Set data structure.
@@ -53,7 +51,7 @@ class MySet<E> implements SimpleSet<E> {
             if (data[i].equals(e)) {
                 E toBeReturned = data[i];
                 data[i] = null;
-                for (int j = i; j < numElements - 1; j++) {
+                for (int j = i; j < numElements; j++) {
                     data[j] = data[j + 1];
                 }
                 numElements--;
@@ -76,11 +74,9 @@ class MySet<E> implements SimpleSet<E> {
         E[] results = (E[]) new Object[elements.length];
         int counter = 0;
         for (E element: elements) {
-            // this guard is in case there are duplicate elements in the
-            // parameter array
-            if (this.contains(element)) {
-                results[counter++] = this.remove(element);
-            }
+            // hypothetically a ElementDoesNotExistException should never
+            // get thrown from this call since we checked above
+            results[counter++] = this.remove(element);
         }
         return results;
     }
@@ -147,44 +143,5 @@ class MySet<E> implements SimpleSet<E> {
             newArray[i] = data[i];
         }
         data = newArray;
-    }
-
-    public Iterator<E> iterator() {
-        return new MySetIterator();
-    }
-
-    private class MySetIterator implements Iterator<E> {
-        private int cursor = 0;
-
-        public boolean hasNext() {
-            if (data.length < cursor + 1) {
-                return false;
-            }
-            return true;
-        }
-
-        public E next() {
-            if (hasNext()) {
-                cursor++;
-                return ((E) data[cursor + 1]);
-
-            } else {
-                return null;
-            }
-        }
-
-        public void remove() {
-            try {
-                if (cursor == 0) {
-                    MySet.this.remove((E) (data[0]));
-                } else {
-                    MySet.this.remove(data[cursor - 1]);
-                }
-                cursor--;
-            } catch (ElementDoesNotExistException e) {
-                throw new IllegalStateException();
-            }
-
-        }
     }
 }
