@@ -6,9 +6,9 @@ import javafx.scene.text.Text;
 import model.Civilization;
 
 public class ResourcesMenu {
-    
+
     /**
-    * creates a resource bar and display the current state of 
+    * creates a resource bar and display the current state of
     * your civilization's resouces
     */
     public ResourcesMenu() {
@@ -19,7 +19,7 @@ public class ResourcesMenu {
     * state of your resource values
     */
     public void update() {
-        
+
     }
     /**
     * updates the resource bar and returns the resource bar
@@ -27,5 +27,6 @@ public class ResourcesMenu {
     */
     public HBox getRootNode() {
         //TODO
+        return null;
     }
 }

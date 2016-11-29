@@ -5,6 +5,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Region;
+
 /**
  * Created by Tian-Yo Yang on 11/11/2016.
  * This class represents the Start Screen for the Civ applicatios. This is the
@@ -28,8 +34,9 @@ public class StartScreen extends StackPane {
         ImageView background = new ImageView();
         background.setImage(image);
 
+
         this.getChildren().addAll(background,
-            getStartButton(), getCivList());
+            getCivList(), getStartButton());
     }
     /**
     * gets the start button
@@ -46,13 +53,14 @@ public class StartScreen extends StackPane {
     */
     public ListView<CivEnum> getCivList() {
         ListView<CivEnum> civList = new ListView<>();
-        ObservableList<String> list = FXCollections.observableArrayList(
+        ObservableList<CivEnum> list = FXCollections.observableArrayList(
             CivEnum.ANCIENT_EGYPT,
             CivEnum.QIN_DYNASTY,
             CivEnum.ROMAN_EMPIRE);
         civList.setItems(list);
-
-
-
+        civList.setMinHeight(100);
+        civList.setMaxHeight(100);
+        civList.setMaxWidth(200);
+        return civList;
     }
 }
