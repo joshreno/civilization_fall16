@@ -7,6 +7,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.TerrainTile;
+import model.Map;
 
 /**
  * Created by RuYiMarone on 11/11/2016.
@@ -51,6 +52,15 @@ public class TerrainTileFX extends StackPane {
      *image of the occupant to the tile.
      */
     public void updateTileView() {
-        //TODO
+        if (!(tile.isEmpty())) {
+            overlay.setStroke(tile.getOccupant().getColor());
+        } else {
+            overlay.setStroke(Color.TRANSPARENT);
+        }
+        if (GameController.getLastClicked().getTile() == tile) {
+            overlay.setStroke()
+        } else {
+
+        }
     }
 }

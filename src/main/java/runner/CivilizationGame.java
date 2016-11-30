@@ -29,6 +29,7 @@ public class CivilizationGame extends Application {
     private String settlementName;
     private StartScreen startScreen = new StartScreen();
     private Scene s;
+    private Stage stage;
 
 
     /**
@@ -36,8 +37,9 @@ public class CivilizationGame extends Application {
      * this method should display a scene on the stage
      */
     public void start(Stage primaryStage) {
-        primaryStage.setScene(startGame());
-        primaryStage.show();
+        stage = primaryStage;
+        stage.setScene(startGame());
+        stage.show();
     }
     /**
      * This is the main method that launches the javafx application
@@ -53,30 +55,42 @@ public class CivilizationGame extends Application {
     */
     public Scene startGame() {
         startScreen.getStartButton().setOnMouseClicked((t) -> {
-                System.out.println("t");
+
                 TextInputDialog dialog = new TextInputDialog("name");
                 dialog.setTitle("Text Input Dialog");
                 dialog.setContentText("Enter a name");
                 String string = dialog.showAndWait().toString();
                 settlementName = string;
 
+                // Button cancel = (Button) dialog.getDialogPane().lookupButton(ButtonType.CANCEL);
+                // cancel.addEventFilter(ActionEvent.ACTION, event ->
+                //         System.out.println("Cancel was definitely pressed")
+                //     ); // do this
+
                 selectedCiv = startScreen
                 .getCivList().getSelectionModel().getSelectedItem();
+
                 if (selectedCiv == CivEnum.ROMAN_EMPIRE) {
                     GameController.setCivilization(new RomanEmpire());
                     System.out.println("Roman Emp");
                 } else if (selectedCiv == CivEnum.QIN_DYNASTY) {
                     GameController.setCivilization(new QinDynasty());
                     System.out.println("Civ");
-                } else {
+                } else if (selectedCiv == CivEnum.ANCIENT_EGYPT){
                     GameController.setCivilization(new Egypt());
                     System.out.println("civilization");
+                } else {
                 }
 
                 map.addEnemies(new Bandit(), 1);
+                map.putSettlement(settlementName,
+                    GameController.getCivilization(), 1, 1);
                 GameScreen gameScreen = new GameScreen();
                 gameScreen.update();
                 s = new Scene(gameScreen);
+                stage.setScene(s);
+                stage.show();
+
             });
         s = new Scene(startScreen);
         return s;

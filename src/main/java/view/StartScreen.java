@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.Region;
+import javafx.geometry.Insets;
 
 /**
  * Created by Tian-Yo Yang on 11/11/2016.
@@ -23,6 +24,8 @@ import javafx.scene.layout.Region;
  */
 public class StartScreen extends StackPane {
 
+    private Button button = new Button("start");
+    private ListView<CivEnum> civList = new ListView<>();
 
     /**
     * constuctor of the start screen. Should set the background
@@ -37,14 +40,16 @@ public class StartScreen extends StackPane {
 
         this.getChildren().addAll(background,
             getCivList(), getStartButton());
+        getStartButton().setTranslateX(-100);
+        getCivList().setTranslateX(100);
+
     }
     /**
     * gets the start button
     * @return the start button
     */
     public Button getStartButton() {
-        Button start = new Button("START");
-        return start;
+        return button;
     }
     /**
     * return a ListView of CivEnums representing the list of
@@ -52,7 +57,6 @@ public class StartScreen extends StackPane {
     * @return listview of CivEnum
     */
     public ListView<CivEnum> getCivList() {
-        ListView<CivEnum> civList = new ListView<>();
         ObservableList<CivEnum> list = FXCollections.observableArrayList(
             CivEnum.ANCIENT_EGYPT,
             CivEnum.QIN_DYNASTY,

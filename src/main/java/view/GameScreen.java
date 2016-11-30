@@ -3,12 +3,16 @@ package view;
 import controller.GameController;
 
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import model.Convertable;
 
 /**
  * This class represents the GameScreen class
  */
 public class GameScreen extends BorderPane {
-
+    private static ResourcesMenu resourcesMenu = new ResourcesMenu();
+    private static VBox vbox = new VBox();
+    private static AbstractMenu abstractMenu;
 
     /**
      * Creates a new view into the game. this layout should include
@@ -18,9 +22,13 @@ public class GameScreen extends BorderPane {
     public GameScreen() {
         // LOOK AT THE BORDER PANE AND HOW IT WORKS
         //DO I NEED getRootNode();
-        this.setTop(getResources().getRootNode());
+        resourcesMenu = getResources();
+        abstractMenu = new StatusMenu();
+
+
+        this.setTop(resourcesMenu.getRootNode());
         this.setCenter(GridFX.getInstance());
-        this.setLeft(new StatusMenu().getRootNode());
+        this.setLeft(abstractMenu.getRootNode());
 
             //other action menu
             // other stuff - action menu
@@ -40,7 +48,7 @@ public class GameScreen extends BorderPane {
     * @return reosuce menu
     */
     public static ResourcesMenu getResources() {
-        return new ResourcesMenu();
+        return resourcesMenu;
     }
 
 
@@ -51,19 +59,20 @@ public class GameScreen extends BorderPane {
      */
     public static void switchMenu(GameController.GameState state) {
         if (state == GameController.GameState.MILITARY) {
-
+          abstractMenu.getRootNode().getChildren().clear();
+          new MilitaryMenu();
         } else if (state == GameController.GameState.WORKER) {
-
+          abstractMenu.getRootNode().getChildren().clear();
+          new WorkerMenu();
         } else if (state == GameController.GameState.BUILDING) {
-
+          abstractMenu.getRootNode().getChildren().clear();
+          new BuildingMenu();
         } else if (state == GameController.GameState.RECRUITING) {
-
-        } else if (state == GameController.GameState.ATTACKING) {
-
-        } else if (state == GameController.GameState.MOVING) {
-
+          abstractMenu.getRootNode().getChildren().clear();
+          new RecruitMenu();
         } else {
-        // GameState.NEUTRAL
+          abstractMenu.getRootNode().getChildren().clear();
+          new StatusMenu();
         }
     }
 }
