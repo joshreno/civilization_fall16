@@ -7,6 +7,5 @@ public class StatusMenu extends AbstractMenu {
      */
     public StatusMenu() {
     	super();
-        super.addMenuItem(super.getRootNode());
     }
 }

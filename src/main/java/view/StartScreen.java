@@ -26,6 +26,7 @@ public class StartScreen extends StackPane {
 
     private Button button = new Button("start");
     private ListView<CivEnum> civList = new ListView<>();
+    private ImageView background = new ImageView();
 
     /**
     * constuctor of the start screen. Should set the background
@@ -34,8 +35,8 @@ public class StartScreen extends StackPane {
     public StartScreen() {
         Image image = new Image(
             "File:./src/main/java/view/civ_background.png");
-        ImageView background = new ImageView();
         background.setImage(image);
+        background.setOpacity(0);
 
 
         this.getChildren().addAll(background,
@@ -66,5 +67,9 @@ public class StartScreen extends StackPane {
         civList.setMaxHeight(100);
         civList.setMaxWidth(200);
         return civList;
+    }
+
+    public ImageView getImageView() {
+        return background;
     }
 }

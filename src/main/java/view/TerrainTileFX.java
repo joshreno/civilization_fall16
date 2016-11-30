@@ -33,6 +33,7 @@ public class TerrainTileFX extends StackPane {
         updateTileView();
         this.setOnMousePressed(event -> {
                 GameController.setLastClicked(this);
+                overlay.setStroke(Color.BLUE);
             });
     }
     /**
@@ -53,14 +54,21 @@ public class TerrainTileFX extends StackPane {
      */
     public void updateTileView() {
         if (!(tile.isEmpty())) {
-            overlay.setStroke(tile.getOccupant().getColor());
+            this.overlay.setStroke(tile.getOccupant().getColor());
+            this.icon.setImage(tile.getOccupant().getImage());
+
         } else {
-            overlay.setStroke(Color.TRANSPARENT);
-        }
-        if (GameController.getLastClicked().getTile() == tile) {
-            overlay.setStroke()
-        } else {
+            this.overlay.setStroke(Color.TRANSPARENT);
+            this.icon = new ImageView("File:./bologna");
 
         }
+        // if (GameController.getLastClicked().getTile() == tile
+        //     && !(GameController.getLastClicked() == null)) {
+        //     this.overlay.setStroke(Color.YELLOW);
+        // } else {
+        //     this.overlay.setStroke(Color.BLACK);
+        // }
+
+        this.getChildren().setAll(background, overlay, icon);
     }
 }

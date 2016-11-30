@@ -56,6 +56,8 @@ public class CivilizationGame extends Application {
     public Scene startGame() {
         startScreen.getStartButton().setOnMouseClicked((t) -> {
 
+                startScreen.getImageView().setOpacity(1);
+
                 TextInputDialog dialog = new TextInputDialog("name");
                 dialog.setTitle("Text Input Dialog");
                 dialog.setContentText("Enter a name");

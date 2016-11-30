@@ -12,7 +12,7 @@ import model.Convertable;
 public class GameScreen extends BorderPane {
     private static ResourcesMenu resourcesMenu = new ResourcesMenu();
     private static VBox vbox = new VBox();
-    private static AbstractMenu abstractMenu;
+    private static AbstractMenu actionMenu;
 
     /**
      * Creates a new view into the game. this layout should include
@@ -23,12 +23,13 @@ public class GameScreen extends BorderPane {
         // LOOK AT THE BORDER PANE AND HOW IT WORKS
         //DO I NEED getRootNode();
         resourcesMenu = getResources();
-        abstractMenu = new StatusMenu();
+        actionMenu = new AbstractMenu();
 
+        vbox.getChildren().addAll(actionMenu.getRootNode());
 
         this.setTop(resourcesMenu.getRootNode());
         this.setCenter(GridFX.getInstance());
-        this.setLeft(abstractMenu.getRootNode());
+        this.setLeft(vbox);
 
             //other action menu
             // other stuff - action menu
@@ -59,20 +60,30 @@ public class GameScreen extends BorderPane {
      */
     public static void switchMenu(GameController.GameState state) {
         if (state == GameController.GameState.MILITARY) {
-          abstractMenu.getRootNode().getChildren().clear();
-          new MilitaryMenu();
+          // actionMenu.getRootNode().getChildren().clear();
+          vbox.getChildren().clear();
+          actionMenu = new MilitaryMenu();
+          vbox.getChildren().addAll(actionMenu.getRootNode());
         } else if (state == GameController.GameState.WORKER) {
-          abstractMenu.getRootNode().getChildren().clear();
-          new WorkerMenu();
+          // actionMenu.getRootNode().getChildren().clear();
+          vbox.getChildren().clear();
+          actionMenu = new WorkerMenu();
+          vbox.getChildren().addAll(actionMenu.getRootNode());
         } else if (state == GameController.GameState.BUILDING) {
-          abstractMenu.getRootNode().getChildren().clear();
-          new BuildingMenu();
+          // actionMenu.getRootNode().getChildren().clear();
+          vbox.getChildren().clear();
+          actionMenu = new BuildingMenu();
+          vbox.getChildren().addAll(actionMenu.getRootNode());
         } else if (state == GameController.GameState.RECRUITING) {
-          abstractMenu.getRootNode().getChildren().clear();
-          new RecruitMenu();
+          // actionMenu.getRootNode().getChildren().clear();
+          vbox.getChildren().clear();
+          actionMenu = new RecruitMenu();
+          vbox.getChildren().addAll(actionMenu.getRootNode());
         } else {
-          abstractMenu.getRootNode().getChildren().clear();
-          new StatusMenu();
+          // actionMenu.getRootNode().getChildren().clear();
+          vbox.getChildren().clear();
+          actionMenu = new StatusMenu();
+          vbox.getChildren().addAll(actionMenu.getRootNode());
         }
     }
 }
