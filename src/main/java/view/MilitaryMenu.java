@@ -26,8 +26,7 @@ public class MilitaryMenu extends AbstractMenu {
         attackButton.setOnMousePressed(e -> {
                 GameController.attacking();
                 GameController.updateResourcesBar();
-
-
+                GameController.getError();
 
                 if (GameController.getError()) {
                     //!((MilitaryUnit) GameController.getLastClicked()
