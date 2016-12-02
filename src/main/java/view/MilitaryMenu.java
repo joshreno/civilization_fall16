@@ -26,25 +26,13 @@ public class MilitaryMenu extends AbstractMenu {
         attackButton.setOnMousePressed(e -> {
                 GameController.attacking();
                 GameController.updateResourcesBar();
-                GameController.getError();
 
-                if (GameController.getError()) {
-                    //!((MilitaryUnit) GameController.getLastClicked()
-                    // .getTile().getOccupant()).getCanAttack()
 
-                    Alert alert = new Alert(
-                        AlertType.ERROR, "Cannot attack", ButtonType.CANCEL);
+                AudioClip attack = new AudioClip(
+                    "File:./src/main/java/view/attack.wav");
+                attack.setVolume(0.5);
+                attack.play();
 
-                    alert.showAndWait();
-                    if (alert.getResult() == ButtonType.CANCEL) {
-                        alert.close();
-                    }
-                } else {
-                    AudioClip attack = new AudioClip(
-                        "File:./src/main/java/view/attack.wav");
-                    attack.setVolume(0.5);
-                    attack.play();
-                }
 
             });
 

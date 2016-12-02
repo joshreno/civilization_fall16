@@ -14,6 +14,9 @@ import model.Unit;
 import view.GameScreen;
 import view.GridFX;
 import view.TerrainTileFX;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 
 import runner.CivilizationGame;
 
@@ -26,7 +29,6 @@ public class GameController {
     private static Civilization enemyCiv = new Bandit();
     private static GameState state = GameState.NEUTRAL;
     private static Random rand = new Random();
-    private static boolean error;
 
     public enum GameState {
         NEUTRAL, MILITARY, WORKER, BUILDING, RECRUITING, ATTACKING, MOVING;
@@ -165,10 +167,17 @@ public class GameController {
             || !((MilitaryUnit) attacker.getOccupant()).getCanAttack()
             || !GridFX.adjacent(attacker, enemy)) {
             state = GameState.NEUTRAL;
-            error = true;
+
+            Alert alert = new Alert(
+                    AlertType.ERROR, "Cannot attack", ButtonType.CANCEL);
+
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.CANCEL) {
+                alert.close();
+            }
+
             return;
         }
-        error = false;
 
         ((MilitaryUnit) attacker.getOccupant()).attack(enemy.getOccupant());
 
@@ -179,10 +188,6 @@ public class GameController {
         if ((enemy.getOccupant()).isDestroyed()) {
             enemy.setOccupant(null);
         }
-    }
-
-    public static boolean getError() {
-        return error;
     }
 
     /**
