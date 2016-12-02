@@ -7,7 +7,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.TerrainTile;
-import model.Map;
 
 /**
  * Created by RuYiMarone on 11/11/2016.

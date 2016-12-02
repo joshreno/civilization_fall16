@@ -34,7 +34,8 @@ public class AbstractMenu {
                     System.exit(0);
                 }
 
-                AudioClip thingy = new AudioClip("File:./src/main/java/view/convert.wav");
+                AudioClip thingy = new AudioClip(
+                    "File:./src/main/java/view/convert.wav");
                 thingy.play();
             });
 

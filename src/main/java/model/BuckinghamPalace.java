@@ -1,7 +1,7 @@
 package model;
 import javafx.scene.image.Image;
 
-class BuckinghamPalace extends Landmark{
+class BuckinghamPalace extends Landmark {
 
     public BuckinghamPalace(Civilization owner) {
         super(owner);
@@ -23,5 +23,5 @@ class BuckinghamPalace extends Landmark{
     public Image getImage() {
         return new Image(
                 "File:./src/main/java/view/Civ_Icon/temple.PNG");
-        }
+    }
 }

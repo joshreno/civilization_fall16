@@ -1,7 +1,7 @@
 package model;
 import javafx.scene.image.Image;
 
-class SaintBasilsCathedral extends Landmark{
+class SaintBasilsCathedral extends Landmark {
 
     public SaintBasilsCathedral(Civilization owner) {
         super(owner);
@@ -23,5 +23,5 @@ class SaintBasilsCathedral extends Landmark{
     public Image getImage() {
         return new Image(
                 "File:./src/main/java/view/Civ_Icon/cathedral.PNG");
-        }
+    }
 }

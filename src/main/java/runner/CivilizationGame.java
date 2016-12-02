@@ -19,11 +19,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.media.AudioClip;
 
 
 /**
@@ -81,23 +79,18 @@ public class CivilizationGame extends Application {
                 String string = dialog.showAndWait().toString();
                 settlementName = string;
 
-                Alert alert = new Alert
-                    (AlertType.INFORMATION, "Welcom to Civilization. " +
-                        "Note: The resource bar updates " +
-                        "after you click the next tile. Also," +
-                        "if you convert a tile, the image of the " +
-                        "new tile appears after you click the " +
-                        "next tile. Thanks for playing!", ButtonType.CANCEL);
+                Alert alert = new Alert(AlertType.INFORMATION,
+                    "Welcom to Civilization. "
+                        + "Note: The resource bar updates "
+                        + "after you click the next tile. Also,"
+                        + "if you convert a tile, the image of the "
+                        + "new tile appears after you click the "
+                        + "next tile. Thanks for playing!", ButtonType.CANCEL);
 
-                    alert.showAndWait();
-                    if (alert.getResult() == ButtonType.CANCEL) {
-                        alert.close();
-                    }
-
-                // Button cancel = (Button) dialog.getDialogPane().lookupButton(ButtonType.CANCEL);
-                // cancel.addEventFilter(ActionEvent.ACTION, event ->
-                //         System.out.println("Cancel was definitely pressed")
-                //     ); // do this
+                alert.showAndWait();
+                if (alert.getResult() == ButtonType.CANCEL) {
+                    alert.close();
+                }
 
                 selectedCiv = startScreen
                 .getCivList().getSelectionModel().getSelectedItem();
@@ -106,7 +99,7 @@ public class CivilizationGame extends Application {
                     GameController.setCivilization(new RomanEmpire());
                 } else if (selectedCiv == CivEnum.QIN_DYNASTY) {
                     GameController.setCivilization(new QinDynasty());
-                } else if (selectedCiv == CivEnum.ANCIENT_EGYPT){
+                } else if (selectedCiv == CivEnum.ANCIENT_EGYPT) {
                     GameController.setCivilization(new Egypt());
                 } else if (selectedCiv == CivEnum.BRITISH_EMPIRE) {
                     GameController.setCivilization(new BritishEmpire());

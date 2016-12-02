@@ -1,7 +1,7 @@
 package model;
 import javafx.scene.image.Image;
 
-class HangingGardensOfBabylon extends Landmark{
+class HangingGardensOfBabylon extends Landmark {
 
     public HangingGardensOfBabylon(Civilization owner) {
         super(owner);
@@ -23,5 +23,5 @@ class HangingGardensOfBabylon extends Landmark{
     public Image getImage() {
         return new Image(
                 "File:./src/main/java/view/Civ_Icon/asian_temple.svg.PNG");
-        }
+    }
 }

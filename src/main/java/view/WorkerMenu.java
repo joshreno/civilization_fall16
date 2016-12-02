@@ -2,15 +2,12 @@ package view;
 
 import controller.GameController;
 import model.Convertable;
-import model.MapObject;
 import model.TerrainTile;
 import javafx.scene.control.Button;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.AudioClip;
 
 
@@ -35,16 +32,20 @@ public class WorkerMenu extends AbstractMenu {
 
 
 
-                if (((Convertable) (tile1.getOccupant())).canConvert(tile1.getType())) {
-                        tile1.setOccupant(((Convertable) (tile1.getOccupant())).convert());
+                if (((Convertable) (tile1.getOccupant()))
+                    .canConvert(tile1.getType())) {
+                    tile1.setOccupant(((Convertable) (tile1
+                            .getOccupant())).convert());
 
-                        AudioClip convert = new AudioClip("File:./src/main/java/view/convert.wav");
-                        convert.setVolume(0.5);
-                        convert.play();
+                    AudioClip convert = new AudioClip(
+                        "File:./src/main/java/view/convert.wav");
+                    convert.setVolume(0.5);
+                    convert.play();
 
                 } else {
-                    Alert alert = new Alert
-                    (AlertType.ERROR, "Cannot convert", ButtonType.CANCEL);
+                    Alert alert = new Alert(
+                        AlertType.ERROR,
+                        "Cannot convert", ButtonType.CANCEL);
 
                     alert.showAndWait();
                     if (alert.getResult() == ButtonType.CANCEL) {
@@ -58,16 +59,18 @@ public class WorkerMenu extends AbstractMenu {
         moveButton.setOnMousePressed(e -> {
                 GameController.moving();
 
-                if (GameController.getLastClicked().getTile().getOccupant() == null) {
-                    Alert alert = new Alert
-                    (AlertType.ERROR, "Cannot move", ButtonType.CANCEL);
+                if (GameController.getLastClicked()
+                    .getTile().getOccupant() == null) {
+                    Alert alert = new Alert(
+                        AlertType.ERROR, "Cannot move", ButtonType.CANCEL);
 
                     alert.showAndWait();
                     if (alert.getResult() == ButtonType.CANCEL) {
                         alert.close();
                     }
                 } else {
-                    AudioClip move = new AudioClip("File:./src/main/java/view/moving.aif");
+                    AudioClip move = new AudioClip(
+                        "File:./src/main/java/view/moving.aif");
                     move.setVolume(0.5);
                     move.play();
                 }

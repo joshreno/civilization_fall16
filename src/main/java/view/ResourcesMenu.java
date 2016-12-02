@@ -2,8 +2,6 @@ package view;
 
 import controller.GameController;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
-import model.Civilization;
 
 import javafx.scene.control.Label;
 
@@ -14,14 +12,15 @@ public class ResourcesMenu {
     private int money;
     private int food;
     private int happiness;
-    HBox hbox = new HBox(15);
+    private HBox hbox = new HBox(15);
 
     /**
     * creates a resource bar and display the current state of
     * your civilization's resouces
     */
     public ResourcesMenu() {
-        stratLevel = GameController.getCivilization().getStrategy().getStrategyLevel();
+        stratLevel = GameController.getCivilization()
+        .getStrategy().getStrategyLevel();
         resources = GameController.getCivilization().getResources();
         settlements = GameController.getCivilization().getNumSettlements();
         money = GameController.getCivilization().getTreasury().getCoins();
@@ -35,7 +34,8 @@ public class ResourcesMenu {
     * state of your resource values
     */
     public void update() {
-        stratLevel = GameController.getCivilization().getStrategy().getStrategyLevel();
+        stratLevel = GameController.getCivilization()
+        .getStrategy().getStrategyLevel();
         resources = GameController.getCivilization().getResources();
         settlements = GameController.getCivilization().getNumSettlements();
         money = GameController.getCivilization().getTreasury().getCoins();
@@ -57,7 +57,8 @@ public class ResourcesMenu {
         Label foodLabel = new Label("Food: " + food);
         Label happyLabel = new Label("Happiness: " + happiness);
 
-        hbox.getChildren().addAll(stratLabel, resourcesLabel, settleLabel, moneyLabel, foodLabel, happyLabel);
+        hbox.getChildren().addAll(stratLabel, resourcesLabel,
+            settleLabel, moneyLabel, foodLabel, happyLabel);
         return hbox;
 
     }

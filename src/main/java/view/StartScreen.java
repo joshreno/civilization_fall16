@@ -1,6 +1,5 @@
 package view;
 
-import model.Civilization;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
@@ -9,8 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.Region;
-import javafx.geometry.Insets;
 import javafx.scene.media.AudioClip;
 
 
@@ -41,10 +38,9 @@ public class StartScreen extends StackPane {
 
         button = new Button("Start", new ImageView(newImage));
         super.setStyle("-fx-background-color: #f4f142;");
-        // AudioClip cool = new AudioClip("File:./src/main/java/runner/robotics.mp4");
-        // cool.setVolume(1);
-        // cool.play();
-        AudioClip cool = new AudioClip("File:./src/main/java/runner/videoplayback-10.mp4");
+
+        AudioClip cool = new AudioClip(
+            "File:./src/main/java/runner/videoplayback-10.mp4");
         cool.play();
 
         Image image = new Image(

@@ -4,7 +4,6 @@ import controller.GameController;
 
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import model.Convertable;
 
 /**
  * This class represents the GameScreen class
@@ -20,9 +19,7 @@ public class GameScreen extends BorderPane {
      *
      */
     public GameScreen() {
-      super.setStyle("-fx-background-color: #f4f142;");
-        // LOOK AT THE BORDER PANE AND HOW IT WORKS
-        //DO I NEED getRootNode();
+        super.setStyle("-fx-background-color: #f4f142;");
         resourcesMenu = getResources();
 
         vbox.getChildren().addAll(actionMenu.getRootNode());
@@ -63,30 +60,30 @@ public class GameScreen extends BorderPane {
     public static void switchMenu(GameController.GameState state) {
         if (state == GameController.GameState.MILITARY) {
           // actionMenu.getRootNode().getChildren().clear();
-          vbox.getChildren().clear();
-          actionMenu = new MilitaryMenu();
-          vbox.getChildren().addAll(actionMenu.getRootNode());
+            vbox.getChildren().clear();
+            actionMenu = new MilitaryMenu();
+            vbox.getChildren().addAll(actionMenu.getRootNode());
 
         } else if (state == GameController.GameState.WORKER) {
           // actionMenu.getRootNode().getChildren().clear();
-          vbox.getChildren().clear();
-          actionMenu = new WorkerMenu();
-          vbox.getChildren().addAll(actionMenu.getRootNode());
+            vbox.getChildren().clear();
+            actionMenu = new WorkerMenu();
+            vbox.getChildren().addAll(actionMenu.getRootNode());
         } else if (state == GameController.GameState.BUILDING) {
           // actionMenu.getRootNode().getChildren().clear();
-          vbox.getChildren().clear();
-          actionMenu = new BuildingMenu();
-          vbox.getChildren().addAll(actionMenu.getRootNode());
+            vbox.getChildren().clear();
+            actionMenu = new BuildingMenu();
+            vbox.getChildren().addAll(actionMenu.getRootNode());
         } else if (state == GameController.GameState.RECRUITING) {
           // actionMenu.getRootNode().getChildren().clear();
-          vbox.getChildren().clear();
-          actionMenu = new RecruitMenu();
-          vbox.getChildren().addAll(actionMenu.getRootNode());
+            vbox.getChildren().clear();
+            actionMenu = new RecruitMenu();
+            vbox.getChildren().addAll(actionMenu.getRootNode());
         } else {
           // actionMenu.getRootNode().getChildren().clear();
-          vbox.getChildren().clear();
-          actionMenu = new StatusMenu();
-          vbox.getChildren().addAll(actionMenu.getRootNode());
+            vbox.getChildren().clear();
+            actionMenu = new StatusMenu();
+            vbox.getChildren().addAll(actionMenu.getRootNode());
         }
         getResources().update();
     }
