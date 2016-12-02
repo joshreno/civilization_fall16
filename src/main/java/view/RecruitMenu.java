@@ -32,125 +32,128 @@ public class RecruitMenu extends AbstractMenu {
         workerListView.setItems(workerList);
         selectButton.setOnMousePressed(e -> {
                 selected = workerListView.getSelectionModel().getSelectedItem();
-                switch (selected) {
-                case "Melee Unit":
-                    GameController.getLastClicked().getTile()
-                        .setOccupant(GameController
-                        .getCivilization().getMeleeUnit());
-                    if (GameController.getCivilization()
-                        .getMeleeUnit().isAffordable()) {
-                        ((Unit) GameController.getLastClicked()
-                        .getTile().getOccupant()).applyInitialCosts();
-                    }
-                    GameController.getLastClicked().updateTileView();
-                    GameController.updateResourcesBar();
-                    break;
-                case "Ranged Unit":
-                    GameController.getLastClicked()
-                        .getTile().setOccupant(GameController
-                            .getCivilization().getRangedUnit());
-                    if (GameController.getCivilization()
-                        .getRangedUnit().isAffordable()) {
-                        ((Unit) GameController.getLastClicked()
+                if (selected != null) {
+                    switch (selected) {
+                    case "Melee Unit":
+                        GameController.getLastClicked().getTile()
+                            .setOccupant(GameController
+                            .getCivilization().getMeleeUnit());
+                        if (GameController.getCivilization()
+                            .getMeleeUnit().isAffordable()) {
+                            ((Unit) GameController.getLastClicked()
                             .getTile().getOccupant()).applyInitialCosts();
-                    }
-                    GameController.getLastClicked().updateTileView();
-                    GameController.updateResourcesBar();
-                    break;
-                case "Hybrid Unit":
-                    GameController.getLastClicked()
-                        .getTile().setOccupant(GameController
-                            .getCivilization().getHybridUnit());
-                    if (GameController.getCivilization()
-                        .getHybridUnit().isAffordable()) {
-                        ((Unit) GameController.getLastClicked()
+                        }
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
+                        break;
+                    case "Ranged Unit":
+                        GameController.getLastClicked()
+                            .getTile().setOccupant(GameController
+                                .getCivilization().getRangedUnit());
+                        if (GameController.getCivilization()
+                            .getRangedUnit().isAffordable()) {
+                            ((Unit) GameController.getLastClicked()
+                                .getTile().getOccupant()).applyInitialCosts();
+                        }
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
+                        break;
+                    case "Hybrid Unit":
+                        GameController.getLastClicked()
+                            .getTile().setOccupant(GameController
+                                .getCivilization().getHybridUnit());
+                        if (GameController.getCivilization()
+                            .getHybridUnit().isAffordable()) {
+                            ((Unit) GameController.getLastClicked()
+                                .getTile().getOccupant()).applyInitialCosts();
+                        }
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
+                        break;
+                    case "Siege Unit":
+                        GameController.getLastClicked()
+                            .getTile().setOccupant(GameController
+                                .getCivilization().getSiegeUnit());
+                        if (GameController.getCivilization()
+                            .getSiegeUnit().isAffordable()) {
+                            ((Unit) GameController.getLastClicked()
+                                .getTile().getOccupant()).applyInitialCosts();
+                        }
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
+                        break;
+                    case "Settlers":
+                        GameController.getLastClicked()
+                            .getTile().setOccupant(GameController
+                                .getCivilization().getSettlerUnit("a"));
+                        if (GameController.getCivilization()
+                            .getSettlerUnit("a").isAffordable()) {
+                            ((Unit) GameController.getLastClicked()
                             .getTile().getOccupant()).applyInitialCosts();
-                    }
-                    GameController.getLastClicked().updateTileView();
-                    GameController.updateResourcesBar();
-                    break;
-                case "Siege Unit":
-                    GameController.getLastClicked()
-                        .getTile().setOccupant(GameController
-                            .getCivilization().getSiegeUnit());
-                    if (GameController.getCivilization()
-                        .getSiegeUnit().isAffordable()) {
-                        ((Unit) GameController.getLastClicked()
-                            .getTile().getOccupant()).applyInitialCosts();
-                    }
-                    GameController.getLastClicked().updateTileView();
-                    GameController.updateResourcesBar();
-                    break;
-                case "Settlers":
-                    GameController.getLastClicked()
-                        .getTile().setOccupant(GameController
-                            .getCivilization().getSettlerUnit("a"));
-                    if (GameController.getCivilization()
-                        .getSettlerUnit("a").isAffordable()) {
-                        ((Unit) GameController.getLastClicked()
-                        .getTile().getOccupant()).applyInitialCosts();
-                    }
-                    GameController.getLastClicked().updateTileView();
-                    GameController.updateResourcesBar();
-                    break;
-                case "Farmers":
-                    GameController.getLastClicked()
-                        .getTile().setOccupant(GameController
-                            .getCivilization().getFarmerUnit());
+                        }
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
+                        break;
+                    case "Farmers":
+                        GameController.getLastClicked()
+                            .getTile().setOccupant(GameController
+                                .getCivilization().getFarmerUnit());
 
-                    if (GameController.getCivilization()
-                        .getFarmerUnit().isAffordable()) {
-                        ((Unit) GameController.getLastClicked()
-                            .getTile().getOccupant()).applyInitialCosts();
+                        if (GameController.getCivilization()
+                            .getFarmerUnit().isAffordable()) {
+                            ((Unit) GameController.getLastClicked()
+                                .getTile().getOccupant()).applyInitialCosts();
+                        }
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
+                        break;
+                    case "Coal Miners":
+                        GameController.getLastClicked()
+                            .getTile().setOccupant(GameController
+                                .getCivilization().getCoalMinerUnit());
+                        if (GameController.getCivilization()
+                            .getCoalMinerUnit().isAffordable()) {
+                            ((Unit) GameController.getLastClicked()
+                                .getTile().getOccupant()).applyInitialCosts();
+                        }
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
+                        break;
+                    case "Anglers":
+                        GameController.getLastClicked()
+                            .getTile().setOccupant(GameController
+                                .getCivilization().getAnglerUnit());
+                        if (GameController.getCivilization()
+                            .getAnglerUnit().isAffordable()) {
+                            ((Unit) GameController.getLastClicked()
+                                .getTile().getOccupant()).applyInitialCosts();
+                        }
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
+                        break;
+                    case "Master Builders":
+                        GameController.getLastClicked()
+                            .getTile().setOccupant(GameController.
+                                getCivilization().getMasterBuilderUnit());
+                        if (GameController.getCivilization().
+                            getMasterBuilderUnit().isAffordable()) {
+                            ((Unit) GameController.getLastClicked()
+                                .getTile().getOccupant()).applyInitialCosts();
+                        }
+                        GameController.getLastClicked().updateTileView();
+                        GameController.updateResourcesBar();
+                        break;
+                    default:
+                        Alert alert = new Alert(
+                            AlertType.ERROR,
+                            "Action cannot occur", ButtonType.CANCEL);
+                        alert.showAndWait();
+                        if (alert.getResult() == ButtonType.CANCEL) {
+                            alert.close();
+                        }
+                        break;
                     }
-                    GameController.getLastClicked().updateTileView();
-                    GameController.updateResourcesBar();
-                    break;
-                case "Coal Miners":
-                    GameController.getLastClicked()
-                        .getTile().setOccupant(GameController
-                            .getCivilization().getCoalMinerUnit());
-                    if (GameController.getCivilization()
-                        .getCoalMinerUnit().isAffordable()) {
-                        ((Unit) GameController.getLastClicked()
-                            .getTile().getOccupant()).applyInitialCosts();
-                    }
-                    GameController.getLastClicked().updateTileView();
-                    GameController.updateResourcesBar();
-                    break;
-                case "Anglers":
-                    GameController.getLastClicked()
-                        .getTile().setOccupant(GameController
-                            .getCivilization().getAnglerUnit());
-                    if (GameController.getCivilization()
-                        .getAnglerUnit().isAffordable()) {
-                        ((Unit) GameController.getLastClicked()
-                            .getTile().getOccupant()).applyInitialCosts();
-                    }
-                    GameController.getLastClicked().updateTileView();
-                    GameController.updateResourcesBar();
-                    break;
-                case "Master Builders":
-                    GameController.getLastClicked()
-                        .getTile().setOccupant(GameController.
-                            getCivilization().getMasterBuilderUnit());
-                    if (GameController.getCivilization().
-                        getMasterBuilderUnit().isAffordable()) {
-                        ((Unit) GameController.getLastClicked()
-                            .getTile().getOccupant()).applyInitialCosts();
-                    }
-                    GameController.getLastClicked().updateTileView();
-                    GameController.updateResourcesBar();
-                    break;
-                default:
-                    Alert alert = new Alert(
-                        AlertType.ERROR,
-                        "Action cannot occur", ButtonType.CANCEL);
-                    alert.showAndWait();
-                    if (alert.getResult() == ButtonType.CANCEL) {
-                        alert.close();
-                    }
-                    break;
+
                 }
                 AudioClip newInvest = new AudioClip(
                     "File:./src/main/java/view/money.wav");
