@@ -11,6 +11,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.Region;
 import javafx.geometry.Insets;
+import javafx.scene.media.AudioClip;
+
+
 
 /**
  * Created by Tian-Yo Yang on 11/11/2016.
@@ -33,10 +36,21 @@ public class StartScreen extends StackPane {
     * image and display a list of civilizations and a start button
     */
     public StartScreen() {
+        Image newImage = new Image(
+            "File:./src/main/java/view/ok.png");
+
+        button = new Button("Start", new ImageView(newImage));
+        super.setStyle("-fx-background-color: #f4f142;");
+        // AudioClip cool = new AudioClip("File:./src/main/java/runner/robotics.mp4");
+        // cool.setVolume(1);
+        // cool.play();
+        AudioClip cool = new AudioClip("File:./src/main/java/runner/videoplayback-10.mp4");
+        cool.play();
+
         Image image = new Image(
             "File:./src/main/java/view/civ_background.png");
         background.setImage(image);
-        background.setOpacity(0);
+        background.setOpacity(1);
 
 
         this.getChildren().addAll(background,
@@ -61,7 +75,10 @@ public class StartScreen extends StackPane {
         ObservableList<CivEnum> list = FXCollections.observableArrayList(
             CivEnum.ANCIENT_EGYPT,
             CivEnum.QIN_DYNASTY,
-            CivEnum.ROMAN_EMPIRE);
+            CivEnum.ROMAN_EMPIRE,
+            CivEnum.MESOPOTAMIA,
+            CivEnum.BRITISH_EMPIRE,
+            CivEnum.RUSSIAN_EMPIRE);
         civList.setItems(list);
         civList.setMinHeight(100);
         civList.setMaxHeight(100);

@@ -15,6 +15,8 @@ import view.GameScreen;
 import view.GridFX;
 import view.TerrainTileFX;
 
+import runner.CivilizationGame;
+
 /**
  * Created by RuYiMarone on 11/11/2016.
  */
@@ -24,6 +26,7 @@ public class GameController {
     private static Civilization enemyCiv = new Bandit();
     private static GameState state = GameState.NEUTRAL;
     private static Random rand = new Random();
+    private static boolean error;
 
     public enum GameState {
         NEUTRAL, MILITARY, WORKER, BUILDING, RECRUITING, ATTACKING, MOVING;
@@ -90,6 +93,7 @@ public class GameController {
         //updates views, switches context menu depending on state
         lastClicked.updateTileView();
         GameScreen.switchMenu(state);
+        CivilizationGame.getGameScreen().update();
     }
 
     /**
@@ -161,8 +165,10 @@ public class GameController {
             || !((MilitaryUnit) attacker.getOccupant()).getCanAttack()
             || !GridFX.adjacent(attacker, enemy)) {
             state = GameState.NEUTRAL;
+            error = true;
             return;
         }
+        error = false;
 
         ((MilitaryUnit) attacker.getOccupant()).attack(enemy.getOccupant());
 
@@ -173,6 +179,10 @@ public class GameController {
         if ((enemy.getOccupant()).isDestroyed()) {
             enemy.setOccupant(null);
         }
+    }
+
+    public static boolean getError() {
+        return error;
     }
 
     /**

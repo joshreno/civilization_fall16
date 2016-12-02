@@ -3,6 +3,11 @@ package view;
 import controller.GameController;
 import javafx.scene.control.Button;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
+import model.MilitaryUnit;
+import javafx.scene.media.AudioClip;
 
 import view.TerrainTileFX;
 
@@ -25,10 +30,46 @@ public class MilitaryMenu extends AbstractMenu {
                 GameController.attacking();
                 GameController.updateResourcesBar();
 
+
+
+                if (GameController.getError()) {
+                    //!((MilitaryUnit) GameController.getLastClicked()
+                    // .getTile().getOccupant()).getCanAttack()
+
+                    Alert alert = new Alert
+                    (AlertType.ERROR, "Cannot attack", ButtonType.CANCEL);
+
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.CANCEL) {
+                        alert.close();
+                    }
+                } else {
+                AudioClip attack = new AudioClip("File:./src/main/java/view/attack.wav");
+                    attack.setVolume(0.5);
+                    attack.play();
+                }
+
             });
 
         moveButton.setOnMousePressed(e -> {
                 GameController.moving();
+
+                if (GameController.getLastClicked().getTile().getOccupant() == null) {
+                    Alert alert = new Alert
+                    (AlertType.ERROR, "Cannot move", ButtonType.CANCEL);
+
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.CANCEL) {
+                        alert.close();
+                    }
+                } else {
+                    AudioClip move = new AudioClip("File:./src/main/java/view/moving.aif");
+                    move.setVolume(0.5);
+                    move.play();
+                }
+
+
+
 
             });
 

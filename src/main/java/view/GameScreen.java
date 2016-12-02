@@ -12,7 +12,7 @@ import model.Convertable;
 public class GameScreen extends BorderPane {
     private static ResourcesMenu resourcesMenu = new ResourcesMenu();
     private static VBox vbox = new VBox();
-    private static AbstractMenu actionMenu;
+    private static AbstractMenu actionMenu = new AbstractMenu();
 
     /**
      * Creates a new view into the game. this layout should include
@@ -20,16 +20,16 @@ public class GameScreen extends BorderPane {
      *
      */
     public GameScreen() {
+      super.setStyle("-fx-background-color: #f4f142;");
         // LOOK AT THE BORDER PANE AND HOW IT WORKS
         //DO I NEED getRootNode();
         resourcesMenu = getResources();
-        actionMenu = new AbstractMenu();
 
         vbox.getChildren().addAll(actionMenu.getRootNode());
 
         this.setTop(resourcesMenu.getRootNode());
         this.setCenter(GridFX.getInstance());
-        this.setLeft(vbox);
+        this.setLeft(new AbstractMenu().getRootNode());
 
             //other action menu
             // other stuff - action menu
@@ -42,6 +42,8 @@ public class GameScreen extends BorderPane {
     public void update() {
         GridFX.update();
         getResources().update();
+        this.setTop(resourcesMenu.getRootNode());
+        this.setLeft(vbox);
       // resources update?
     }
     /**
@@ -64,6 +66,7 @@ public class GameScreen extends BorderPane {
           vbox.getChildren().clear();
           actionMenu = new MilitaryMenu();
           vbox.getChildren().addAll(actionMenu.getRootNode());
+
         } else if (state == GameController.GameState.WORKER) {
           // actionMenu.getRootNode().getChildren().clear();
           vbox.getChildren().clear();
@@ -85,5 +88,6 @@ public class GameScreen extends BorderPane {
           actionMenu = new StatusMenu();
           vbox.getChildren().addAll(actionMenu.getRootNode());
         }
+        getResources().update();
     }
 }

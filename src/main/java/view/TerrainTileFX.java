@@ -54,20 +54,19 @@ public class TerrainTileFX extends StackPane {
      */
     public void updateTileView() {
         if (!(tile.isEmpty())) {
-            this.overlay.setStroke(tile.getOccupant().getColor());
+            this.overlay.setFill(tile.getOccupant().getColor());
             this.icon.setImage(tile.getOccupant().getImage());
 
         } else {
-            this.overlay.setStroke(Color.TRANSPARENT);
+            this.overlay.setFill(Color.TRANSPARENT);
             this.icon = new ImageView("File:./bologna");
 
         }
-        // if (GameController.getLastClicked().getTile() == tile
-        //     && !(GameController.getLastClicked() == null)) {
-        //     this.overlay.setStroke(Color.YELLOW);
-        // } else {
-        //     this.overlay.setStroke(Color.BLACK);
-        // }
+        if ((GameController.getLastClicked() == this)) {
+            this.overlay.setFill(Color.YELLOW.deriveColor(1, 1, 1, 0.6));
+        } else {
+            this.overlay.setStroke(Color.BLACK);
+        }
 
         this.getChildren().setAll(background, overlay, icon);
     }
